@@ -5,7 +5,7 @@ orbs:
 
 jobs:
     run_evaluate_tests_WIN:
-        working_directory: ~/evaluate
+        working_directory: ~/circle
         executor:
             name: win/default
             shell: powershell
