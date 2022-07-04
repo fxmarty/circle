@@ -28,3 +28,25 @@ if __name__ == "__main__":
     )
 
     print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
+
+    subprocess.run(
+        f"python3 examples/pytorch/text-classification/run_glue.py"
+        f" --model_name_or_path {model_name}"
+        f" --task_name sst2"
+        f" --do_eval"
+        f" --max_seq_length 9999999999"  # rely on tokenizer.model_max_length for max_length
+        f" --output_dir {os.path.join(dir_path, 'textclassification_sst2_transformers')}"
+        f" --max_eval_samples 200",
+        shell=True,
+        cwd=os.path.join(dir_path, "transformers"),
+    )
+
+    print("after run_glue.py", os.listdir(dir_path))
+    print("after run_glue.py", os.path.join(dir_path, 'textclassification_sst2_transformers'))
+
+    with open(
+        f"{os.path.join(dir_path, 'textclassification_sst2_transformers', 'eval_results.json')}", "r"
+    ) as f:
+        transformers_results = json.load(f)
+
+    print(transformers_results)
