@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     model_name = "howey/bert-base-uncased-sst2"
     subprocess.run(
-        f"python3 examples/pytorch/text-classification/run_glue.py"
+        f"py -3 examples/pytorch/text-classification/run_glue.py"
         f" --model_name_or_path {model_name}"
         f" --task_name sst2"
         f" --do_eval"
