@@ -32,6 +32,9 @@ if __name__ == "__main__":
 
     print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
 
+    subprocess.run("git sparse-checkout disable", shell=True,
+        cwd=os.path.join(dir_path, "transformers"))
+
     """
     if platform.system() == "Windows":
         python_command = "py -3"
