@@ -33,16 +33,17 @@ if __name__ == "__main__":
 
     print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
 
+    """
     if platform.system() == "Windows":
         python_command = "py -3"
     else:
         python_command = "python3"
-
+    """
 
     model_name = "howey/bert-base-uncased-sst2"
-    print("python_command", python_command)
+    #print("python_command", python_command)
     subprocess.run(
-        f"{python_command} examples/pytorch/text-classification/run_glue.py"
+        f"python examples/pytorch/text-classification/run_glue.py"
         f" --model_name_or_path {model_name}"
         f" --task_name sst2"
         f" --do_eval"
