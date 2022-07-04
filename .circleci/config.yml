@@ -18,6 +18,7 @@ jobs:
             - run: |
                 conda activate py37
                 pip install transformers numpy datasets
+                pip install scipy sklearn
             - run: |
                 conda activate py37
                 python ./test_git.py
