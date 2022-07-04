@@ -17,10 +17,9 @@ if __name__ == "__main__":
         cwd=dir_path,
     )
 
-    print("after git clone", dir_path)
+    print("after git clone", os.listdir(dir_path))
 
 
-    print("self.dir_path", dir_path)
 
     subprocess.run(
         "git sparse-checkout set examples/pytorch/text-classification",
@@ -28,4 +27,4 @@ if __name__ == "__main__":
         cwd=os.path.join(dir_path, "transformers"),
     )
 
-    print("after sparse-checkout", os.path.join(dir_path, "transformers"))
+    print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
