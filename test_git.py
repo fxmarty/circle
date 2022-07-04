@@ -3,7 +3,17 @@ import os
 import platform
 import shutil
 import subprocess
+import stat
 import tempfile
+
+
+def onerror(func, path, exc_info):
+    # Is the error an access error?
+    if not os.access(path, os.W_OK):
+        os.chmod(path, stat.S_IWUSR)
+        func(path)
+    else:
+        raise
 
 if __name__ == "__main__":
     dir_path = tempfile.mkdtemp("evaluator_trainer_parity_test")
@@ -70,4 +80,4 @@ if __name__ == "__main__":
 
     print(transformers_results)
     """
-    shutil.rmtree(dir_path)
+    shutil.rmtree(dir_path, onerror=onerror)
