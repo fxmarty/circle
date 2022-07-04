@@ -14,6 +14,8 @@ if __name__ == "__main__":
     branch = ""
     if not transformers_version.endswith(".dev0"):
         branch = f"--branch v{transformers_version}"
+
+
     subprocess.run(
         f"git clone --depth 3 --filter=blob:none --sparse {branch} https://github.com/huggingface/transformers",
         shell=True,
@@ -23,17 +25,17 @@ if __name__ == "__main__":
     print("after git clone", os.listdir(dir_path))
 
 
-
+    """
     subprocess.run(
         "git sparse-checkout set examples/pytorch/text-classification",
         shell=True,
         cwd=os.path.join(dir_path, "transformers"),
     )
+    """
 
     print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
 
-    subprocess.run("git sparse-checkout disable", shell=True,
-        cwd=os.path.join(dir_path, "transformers"))
+    #subprocess.run("git sparse-checkout disable", shell=True, cwd=os.path.join(dir_path, "transformers"))
 
     """
     if platform.system() == "Windows":
