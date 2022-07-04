@@ -1,6 +1,10 @@
 import os
+import platform
 import subprocess
 import tempfile
+
+import datasets
+import transformers
 
 if __name__ == "__main__":
     dir_path = tempfile.mkdtemp("evaluator_trainer_parity_test")
@@ -29,9 +33,16 @@ if __name__ == "__main__":
 
     print("after sparse-checkout", os.listdir(os.path.join(dir_path, "transformers")))
 
+    if platform.system() == "Windows":
+        python_command = "py -3"
+    else:
+        python_command = "python3"
+
+
     model_name = "howey/bert-base-uncased-sst2"
+    print("python_command", python_command)
     subprocess.run(
-        f"py -3 examples/pytorch/text-classification/run_glue.py"
+        f"{python_command} examples/pytorch/text-classification/run_glue.py"
         f" --model_name_or_path {model_name}"
         f" --task_name sst2"
         f" --do_eval"
