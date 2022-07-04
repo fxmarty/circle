@@ -49,7 +49,7 @@ if __name__ == "__main__":
         f" --do_eval"
         f" --max_seq_length 9999999999"  # rely on tokenizer.model_max_length for max_length
         f" --output_dir {os.path.join(dir_path, 'textclassification_sst2_transformers')}"
-        f" --max_eval_samples 200",
+        f" --max_eval_samples 10",
         shell=True,
         cwd=os.path.join(dir_path, "transformers"),
     )
