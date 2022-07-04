@@ -14,11 +14,9 @@ jobs:
             - run: |
                 conda init powershell
                 conda update conda
-                conda create -n py37 python=3.7 pytorch --yes
+                conda create -n py37 python=3.7 --yes
             - run: |
                 conda activate py37
-                pip install transformers numpy datasets
-                pip install scipy sklearn
             - run: |
                 conda activate py37
                 python ./test_git.py

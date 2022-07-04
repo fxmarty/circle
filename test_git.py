@@ -5,9 +5,6 @@ import shutil
 import subprocess
 import tempfile
 
-import datasets
-import transformers
-
 if __name__ == "__main__":
     dir_path = tempfile.mkdtemp("evaluator_trainer_parity_test")
 
@@ -42,6 +39,7 @@ if __name__ == "__main__":
         python_command = "python3"
     """
 
+    """
     model_name = "howey/bert-base-uncased-sst2"
     #print("python_command", python_command)
     subprocess.run(
@@ -59,11 +57,12 @@ if __name__ == "__main__":
     print("after run_glue.py", os.listdir(dir_path))
     print("after run_glue.py", os.listdir(os.path.join(dir_path, 'textclassification_sst2_transformers')))
 
+
     with open(
         f"{os.path.join(dir_path, 'textclassification_sst2_transformers', 'eval_results.json')}", "r"
     ) as f:
         transformers_results = json.load(f)
 
     print(transformers_results)
-
+    """
     shutil.rmtree(dir_path)
