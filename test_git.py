@@ -1,6 +1,7 @@
 import json
 import os
 import platform
+import shutil
 import subprocess
 import tempfile
 
@@ -64,3 +65,5 @@ if __name__ == "__main__":
         transformers_results = json.load(f)
 
     print(transformers_results)
+
+    shutil.rmtree(dir_path)
