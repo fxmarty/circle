@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+    win: circleci/windows@2.2.0
+
+jobs:
+    run_evaluate_tests_WIN:
+        working_directory: ~/evaluate
+        executor:
+            name: win/default
+            shell: powershell
+        steps:
+            - checkout
+            - run: |
+                conda init powershell
+                conda update conda
+                conda create -n py37 python=3.7 pytorch --yes
+            - run: |
+                conda activate py37
+            - run: |
+                conda activate py37
+                python ./test_git.py
+
+workflows:
+    version: 2
+    build_and_test:
+        jobs:
+            - run_evaluate_tests_WIN
