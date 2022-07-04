@@ -54,7 +54,7 @@ if __name__ == "__main__":
     )
 
     print("after run_glue.py", os.listdir(dir_path))
-    print("after run_glue.py", os.path.join(dir_path, 'textclassification_sst2_transformers'))
+    print("after run_glue.py", os.listdir(os.path.join(dir_path, 'textclassification_sst2_transformers')))
 
     with open(
         f"{os.path.join(dir_path, 'textclassification_sst2_transformers', 'eval_results.json')}", "r"
